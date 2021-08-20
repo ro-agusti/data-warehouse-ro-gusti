@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Warehouse</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="menu" id="menu">
+            <h2 class="logo">LOGO</h2>
+            <div class="menu-div" id="menu-div">
+                <ul class="menu-ul " id="menu-ul">
+                    <li id="contact" >contactos</li>
+                    <li id="companies">usuarios</li>
+                    <li id="users">compañias</li>
+                    <li id="location">region/ciudad</li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-line"></div>
+    </header>
+    <main>
+        <section class="hidden login">
+            <div class="login-div">
+                <h3 class="login-subtitle">USUARIO</h3>
+                <input type="text" class="input-login" id="username-login">
+                <h3 class="login-subtitle">CONTRASEÑA</h3>
+                <input type="password" class="input-login" id="password-login">
+                <button class="button-login" id="button-login">INGRESAR</button>
+            </div>
+        </section>
+        <section class="hidden banner">
+            <div class="left">
+                <h1 class="title">Contactos</h1>
+                <div class="search">
+                    <div class="searching">
+                        <input type="text" name="contact">
+                        <i class="fas fa-sort-down"></i>
+                    </div>
+                    <button class="magnifier"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <div class="right">
+                <button class="upload"></button>
+                <button class="exp-contact">Exportar contactos<i class="fas fa-sort-down"></i></button>
+                <button class="ad-contact">Agregar contacto</button>
+            </div>
+        </section>
+        <section class="hidden contact-board">
+            <table class="table">
+                <tr class="titles-table">
+                    <td><input type="checkbox"></td>
+                    <td>Contacto<i class="fas fa-exchange-alt"></i></td>
+                    <td>Pais/Region<i class="fas fa-exchange-alt"></i></td>
+                    <td>Compañia<i class="fas fa-exchange-alt"></i></td>
+                    <td>Cargo<i class="fas fa-exchange-alt"></i></td>
+                    <td>Canal preferido</td>
+                    <td>Interes<i class="fas fa-exchange-alt"></i></td>
+                    <td>Acciones</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td class="td-contact">
+                        <img src="./assets/img/user-default.svg" alt="img-contacto" class="img-contact">
+                        <div class="text-contact">
+                            <h5 class="title">Camila Soledad Panto</h5>
+                            <h6 class="subtitle">camilapanto@mail.com</h6>
+                        </div>
+                    </td>
+                    <td class="td-country">
+                        <div class="text-contact">
+                            <h5 class="title">Argentina</h5>
+                            <h6 class="subtitle">Latam</h6>
+                        </div>
+                    </td>
+                    <td class="td-general">
+                        <h5 class="title">McDonalds</h5>
+                    </td>
+                    <td class="td-general">
+                        <h5 class="title">UX Designer</h5>
+                    </td>
+                    <td class="td-preferencias">
+                        <div class="td-preferencias_preferencia">
+                            <h6>Facebook</h6>
+                        </div>
+                        <div class="td-preferencias_preferencia">
+                            <h6>Instagram</h6>
+                        </div>
+                    </td>
+                    <td class="td-interes">
+                        <div class="td-interes_div">
+                            <h6>100%</h6>
+                        </div>
+                    </td>
+                    <td>Acciones</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <script src="./assets/scripts/login.js"></script>
+</body>
+</html>

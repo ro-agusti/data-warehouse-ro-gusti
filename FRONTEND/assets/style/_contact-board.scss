@@ -1,0 +1,97 @@
+.table {
+  width: 100%;
+  margin-top: 73px;
+  margin-left: 27px;
+  margin-right: 27px;
+  border: solid 1px $light-grey;
+  padding-top: 11.5px;
+  tr {
+    height: 56px;
+    &:first-child {
+      border-bottom: solid 1px $light-grey;
+    }
+    td {
+      padding-left: 16.7px;
+      font-family: $font;
+      font-size: 13px;
+      font-weight: bold;
+      color: $dark-grey;
+      &:first-child {
+        width: 54px;
+        padding-left: 18.5px;
+      }
+      i {
+        transform: rotate(90deg);
+        width: 9.3px;
+        height: 12px;
+        margin-left: 8.7px;
+        color: $dark-grey;
+      }
+    }
+    .td-contact {
+      height: 56px;
+      padding-left: 16.7px;
+      display: flex;
+      align-items: center;
+      .img-contact {
+        width: 24px;
+        height: 24px;
+        border-radius: 12px;
+      }
+      .text-contact {
+        margin-left: 8.6px;
+        font-family: $font;
+        .title {
+          font-size: 12px;
+          font-weight: bold;
+          color: $dark-grey;
+        }
+        .subtitle{
+            font-size: 11px;
+          font-weight: bold;
+          color: $light-grey;
+        }
+      }
+    }
+    .td-country {
+      .text-contact {
+        margin-left: 8.6px;
+        font-family: $font;
+        .title {
+          font-size: 12px;
+          font-weight: bold;
+          color: $dark-grey;
+        }
+        .subtitle{
+            font-size: 11px;
+          font-weight: bold;
+          color: $light-grey;
+        }
+      }
+    }
+    .td-general{
+      .title {
+        font-size: 12px;
+        font-weight: bold;
+        color: $dark-grey;
+      }
+    }
+    .td-preferencias{
+      display: flex;
+      justify-content: start;
+      .td-preferencias_preferencia{
+        width: 64px;
+        height: 24px;
+        background-color: $light-blue;
+        display: flex;
+        margin: 3px;
+        h6{
+          margin: auto;
+          color: $color-light-blue;
+          font-size: 10px;
+          font-family: $font;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+const postCompany = (req,res) => {
+    
+};
