@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
+const { existingCompanyIDSql } = require('../helpers/companies.helpers');
 const { existingRegionIDSql, existingCountryIDSql, existingCityIDSql } = require('../helpers/location.helpers');
 const { verifyDataSQL, verifyRoleDataSQL } = require('../helpers/users.helpers');
 
+//---user
 const loginError = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -15,7 +17,8 @@ const loginError = async (req, res, next) => {
         res.status(500).send(error);
     }
 };
-
+ 
+//---general
 const verifyToken = (req, res, next) => {
     const { authorization } = req.headers;
     if (!authorization) {
@@ -33,6 +36,7 @@ const verifyToken = (req, res, next) => {
         }
     })
 };
+
 const verifyRoleAdmin = (req,res,next) => {
     let { authorization } = req.headers;
     const tokenSended = authorization.split(' ')[1]
@@ -40,10 +44,12 @@ const verifyRoleAdmin = (req,res,next) => {
     if (jwtDecode.role !== 'ADMIN') {
         return res.status(401).send('unauthorized user');
     } else {
+        req.admin= jwtDecode
         next();
     }
 };
 
+//---location
 const verifyIDRegion = async(req,res,next) => {
     try {
         const {idUser,idRegion} = req.params
@@ -86,11 +92,41 @@ const verifyIDCity = async(req,res,next) => {
     }
 };
 
+const verifyIDCityBody = async(req,res,next) => {
+    try {
+        const {name, ID_city, address, email, telephone} = req.body;
+        const confirmed = await existingCityIDSql(ID_city);
+        if (confirmed.length >0) {
+            next();
+        } else {
+            res.status(403).send('wrong city ID');
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
+
+const verifyIDCompany = async(req,res,next) => {
+    try {
+        const {idUser, idCompany} = req.params;
+        const confirmed = await existingCompanyIDSql(idCompany);
+        if (confirmed.length >0) {
+            next();
+        } else {
+            res.status(403).send('wrong company ID');
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
+
 module.exports = {
     loginError,
     verifyToken,
     verifyRoleAdmin,
     verifyIDRegion,
     verifyIDCountry,
-    verifyIDCity
+    verifyIDCity,
+    verifyIDCityBody,
+    verifyIDCompany
 }

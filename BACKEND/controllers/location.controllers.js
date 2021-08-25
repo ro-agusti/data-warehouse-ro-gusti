@@ -27,7 +27,7 @@ const getRegions = async(req,res) => {
 const putRegion = async(req,res) => {
     try {
         const {name} = req.body;
-        const {idUser, idRegion} = req.params;
+        const {idRegion} = req.params;
         await updateRegionSql(name, idRegion);
         respuesta = {
             mensaje: 'successful modification'
@@ -40,7 +40,7 @@ const putRegion = async(req,res) => {
 
 const deleteRegion = async(req,res) => {
     try {
-        const {idUser, idRegion} = req.params;
+        const {idRegion} = req.params;
         await deleteRegionSql(idRegion);
         respuesta = {
             mensaje: 'region removed'
@@ -67,7 +67,7 @@ const postCountry = async(req,res) => {
 
 const getCountries = async(req,res) => {
     try {
-        const {idUser, idRegion} = req.params;
+        const {idRegion} = req.params;
         const sqlHelpers = await selectCountriesByRegionSql(idRegion);
         respuesta = {
             mensaje: sqlHelpers
@@ -81,7 +81,7 @@ const getCountries = async(req,res) => {
 const putCountry = async(req,res) => {
     try {
         const {name} = req.body;
-        const {idUser, idCountry} = req.params;
+        const { idCountry} = req.params;
         await updateCountrySql(name, idCountry);
         respuesta = {
             mensaje: 'successful modification'
@@ -94,7 +94,7 @@ const putCountry = async(req,res) => {
 
 const deleteCountry = async(req,res) => {
     try {
-        const {idUser, idCountry} = req.params;
+        const { idCountry} = req.params;
         await deleteCountrySql(idCountry);
         respuesta = {
             mensaje: 'country removed'
@@ -121,7 +121,7 @@ const postCity = async(req,res) => {
 
 const getCities = async(req,res) => {
     try {
-        const {idUser, idCountry} = req.params;
+        const {idCountry} = req.params;
         const sqlHelpers = await selectCitiesByCountrySql(idCountry);
         respuesta = {
             mensaje: sqlHelpers
@@ -135,7 +135,7 @@ const getCities = async(req,res) => {
 const putCity = async(req,res) => {
     try {
         const {name} = req.body;
-        const {idUser, idCity} = req.params;
+        const {idCity} = req.params;
         await updateCitySql(name, idCity);
         respuesta = {
             mensaje: 'successful modification'
@@ -148,7 +148,7 @@ const putCity = async(req,res) => {
 
 const deleteCity = async(req,res) => {
     try {
-        const {idUser, idCity} = req.params;
+        const { idCity} = req.params;
         await deleteCitySql(idCity);
         respuesta = {
             mensaje: 'city removed'

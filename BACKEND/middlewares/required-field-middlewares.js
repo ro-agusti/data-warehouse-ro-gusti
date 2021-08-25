@@ -97,6 +97,51 @@ const cityIdRegionRequiredField = (req, res, next) => {
     }
 };
 
+const companyNameRequiredField = (req, res, next) => {
+    const {name, ID_city, address, email, telephone} = req.body;
+    if (!name) {
+        res.status(403).send('company name still to be completed');
+    } else {
+        next();
+    }
+};
+
+const companyIDcityRequiredField = (req, res, next) => {
+    const {name, ID_city, address, email, telephone} = req.body;
+    if (!ID_city) {
+        res.status(403).send('city ID still to be completed');
+    } else {
+        next();
+    }
+};
+
+const companyAddressRequiredField = (req, res, next) => {
+    const {name, ID_city, address, email, telephone} = req.body;
+    if (!address) {
+        res.status(403).send('address still to be completed');
+    } else {
+        next();
+    }
+};
+
+const companyEmailRequiredField = (req, res, next) => {
+    const {name, ID_city, address, email, telephone} = req.body;
+    if (!email) {
+        res.status(403).send('email still to be completed');
+    } else {
+        next();
+    }
+};
+
+const companyTelephoneRequiredField = (req, res, next) => {
+    const {name, ID_city, address, email, telephone} = req.body;
+    if (!telephone) {
+        res.status(403).send('telephone still to be completed');
+    } else {
+        next();
+    }
+};
+
 module.exports = {
     firstNameRequiredField,
     lastNameRequiredField,
@@ -108,5 +153,10 @@ module.exports = {
     countryNameRequiredField,
     countryIdRegionRequiredField,
     cityNameRequiredField,
-    cityIdRegionRequiredField
+    cityIdRegionRequiredField,
+    companyNameRequiredField,
+    companyIDcityRequiredField,
+    companyAddressRequiredField,
+    companyEmailRequiredField,
+    companyTelephoneRequiredField
 }

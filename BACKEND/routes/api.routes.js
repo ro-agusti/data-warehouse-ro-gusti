@@ -1,12 +1,13 @@
 const { Router } = require('express');
+const { postCompany, getCompanies, putCompany, deleteCompany } = require('../controllers/companies.controllers');
 const router = Router();
 
 const { postRegion, getRegions, putRegion, deleteRegion, postCountry, getCountries, putCountry, deleteCountry, postCity, getCities, putCity, deleteCity } = require('../controllers/location.controllers');
 const { postLogin, postUser } = require('../controllers/users.controllers');
-const { loginError, verifyToken, verifyRoleAdmin, verifyIDRegion, verifyIDCountry, verifyIDCity } = require('../middlewares/data-error.middlewares');
-const { existingUser, existingRegion, existingCountry, existingCity } = require('../middlewares/existing-data.middlewares');
+const { loginError, verifyToken, verifyRoleAdmin, verifyIDRegion, verifyIDCountry, verifyIDCity, verifyIDCityBody, verifyIDCompany } = require('../middlewares/data-error.middlewares');
+const { existingUser, existingRegion, existingCountry, existingCity, existingCompanyData } = require('../middlewares/existing-data.middlewares');
 const { emailSyntaxError, weakPassword } = require('../middlewares/regular.expressions..middlewares');
-const { firstNameRequiredField, emailRequiredField, passwordRequiredField, lastNameRequiredField, profileRequiredField, countryRequiredField, regionNameRequiredField, countryNameRequiredField, countryIdRegionRequiredField, cityNameRequiredField, cityIdRegionRequiredField } = require('../middlewares/required-field-middlewares');
+const { firstNameRequiredField, emailRequiredField, passwordRequiredField, lastNameRequiredField, profileRequiredField, countryRequiredField, regionNameRequiredField, countryNameRequiredField, countryIdRegionRequiredField, cityNameRequiredField, cityIdRegionRequiredField, companyNameRequiredField, companyIDcityRequiredField, companyAddressRequiredField, companyEmailRequiredField, companyTelephoneRequiredField } = require('../middlewares/required-field-middlewares');
 
 //---users---
 router.post('/login',
@@ -18,7 +19,7 @@ router.post('/login',
     postLogin
 );
 
-router.post('/user/:idAdmin',
+router.post('/user',
     [
         firstNameRequiredField,
         lastNameRequiredField,
@@ -37,7 +38,7 @@ router.post('/user/:idAdmin',
 
 //---location---
 //REGION
-router.post('/region/:idUser',
+router.post('/region',
     [
         verifyToken,
         existingRegion,
@@ -46,14 +47,14 @@ router.post('/region/:idUser',
     postRegion
 );
 
-router.get('/region/:idUser',
+router.get('/region',
     [
         verifyToken
     ],
     getRegions
 );
 
-router.put('/region/:idUser/:idRegion',
+router.put('/region/:idRegion',
     [
         verifyToken,
         verifyIDRegion,
@@ -62,7 +63,7 @@ router.put('/region/:idUser/:idRegion',
     putRegion
 );
 
-router.delete('/region/:idUser/:idRegion',
+router.delete('/region/:idRegion',
     [
         verifyToken,
         verifyIDRegion
@@ -71,7 +72,7 @@ router.delete('/region/:idUser/:idRegion',
 );
 
 //COUNTRY
-router.post('/country/:idUser/:idRegion',
+router.post('/country/:idRegion',
     [
         verifyToken,
         verifyIDRegion,
@@ -82,7 +83,7 @@ router.post('/country/:idUser/:idRegion',
     postCountry
 );
 
-router.get('/country/:idUser/:idRegion',
+router.get('/country/:idRegion',
     [
         verifyToken,
         verifyIDRegion
@@ -90,7 +91,7 @@ router.get('/country/:idUser/:idRegion',
     getCountries
 );
 
-router.put('/country/:idUser/:idCountry',
+router.put('/country/:idCountry',
     [
         verifyToken,
         verifyIDCountry,
@@ -99,7 +100,7 @@ router.put('/country/:idUser/:idCountry',
     putCountry
 );
 
-router.delete('/country/:idUser/:idCountry',
+router.delete('/country/:idCountry',
     [
         verifyToken,
         verifyIDCountry
@@ -108,7 +109,7 @@ router.delete('/country/:idUser/:idCountry',
 );
 
 //CITY
-router.post('/city/:idUser/:idCountry',
+router.post('/city/:idCountry',
     [
         verifyToken,
         verifyIDCountry,
@@ -119,7 +120,7 @@ router.post('/city/:idUser/:idCountry',
     postCity
 );
 
-router.get('/city/:idUser/:idCountry',
+router.get('/city/:idCountry',
     [
         verifyToken,
         verifyIDCountry
@@ -127,7 +128,7 @@ router.get('/city/:idUser/:idCountry',
     getCities
 );
 
-router.put('/city/:idUser/:idCity',
+router.put('/city/:idCity',
     [
         verifyToken,
         verifyIDCity,
@@ -135,7 +136,7 @@ router.put('/city/:idUser/:idCity',
     ], putCity
 );
 
-router.delete('/city/:idUser/:idCity',
+router.delete('/city/:idCity',
     [
         verifyToken,
         verifyIDCity
@@ -144,34 +145,62 @@ router.delete('/city/:idUser/:idCity',
 );
 
 //---companies
-router.post('/company/:idUser',
-[
-    verifyToken
-]
+router.post('/company',
+    [
+        verifyToken,
+        companyNameRequiredField,
+        companyIDcityRequiredField,
+        companyAddressRequiredField,
+        companyEmailRequiredField,
+        companyTelephoneRequiredField,
+        emailSyntaxError,
+        verifyIDCityBody,
+        existingCompanyData
+    ],
+    postCompany
 );
 
-router.get('/company/:idUser',);
+router.get('/company',
+    [
+        verifyToken
+    ],
+    getCompanies
+);
 
-router.put('/company/:idUser/:idCompany',);
+router.put('/company/:idCompany',
+    [
+        verifyToken,
+        verifyIDCompany,
+        emailSyntaxError,
+        verifyIDCityBody
+    ],
+    putCompany
+);
 
-router.delete('/company/:idUser/:idCompany',);
+router.delete('/company/:idCompany',
+    [
+        verifyToken,
+        verifyIDCompany
+    ],
+    deleteCompany
+);
 
 //---contacts
-router.post('/contact/:idUser',);
+router.post('/contact',);
 
-router.get('/contact/:idUser',);
+router.get('/contact',);
 
-router.put('/contact/:idUser/:idContact',);
+router.put('/contact/:idContact',);
 
-router.delete('/contact/:idUser/:idContact',);
+router.delete('/contact/:idContact',);
 
 //---contact type
-router.post('/contact-type/:idUser/:idContact',);
+router.post('/contact-type/:idContact',);
 
-router.get('/contact-type/:idUser/:idContact',);
+router.get('/contact-type/:idContact',);
 
-router.put('/contact-type/:idUser/:idContact/:idContactType',);
+router.put('/contact-type/:idContact/:idContactType',);
 
-router.delete('/contact-type/:idUser/:idContact/:idContactType',);
+router.delete('/contact-type/:idContact/:idContactType',);
 
 module.exports = router;
