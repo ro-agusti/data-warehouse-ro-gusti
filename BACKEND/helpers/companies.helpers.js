@@ -32,7 +32,7 @@ const existingCompanyIDSql = async(idCompanyParams) => {
 
 const existingCompanyNameSql = async(nameBody) => {
     try {
-        const retorno = await sequelize.query('SELECT * FROM `companies` WHERE `name` = ?',
+        const retorno = await sequelize.query('SELECT * FROM `companies` WHERE `company_name` = ?',
         { replacements: [nameBody], type: sequelize.QueryTypes.SELECT });
         return retorno;
     } catch (error) {
@@ -42,7 +42,7 @@ const existingCompanyNameSql = async(nameBody) => {
 
 const existingCompanyEmailSql = async(emailBody) => {
     try {
-        const retorno = await sequelize.query('SELECT * FROM `companies` WHERE `email` = ?',
+        const retorno = await sequelize.query('SELECT * FROM `companies` WHERE `company_email` = ?',
         { replacements: [emailBody], type: sequelize.QueryTypes.SELECT });
         return retorno;
     } catch (error) {
@@ -52,7 +52,7 @@ const existingCompanyEmailSql = async(emailBody) => {
 
 const updateCampanySql = async(idCityBody, addressBody, emailBody, telephoneBody, idCompanyParams) => {
     try {
-        const retorno = await sequelize.query('UPDATE `companies` SET `ID_city` = ?, `address`= ?, `email` =?, `telephone` =? WHERE `ID_company`= ?',
+        const retorno = await sequelize.query('UPDATE `companies` SET `ID_city` = ?, `company_address`= ?, `company_email` =?, `company_telephone` =? WHERE `ID_company`= ?',
             { replacements: [idCityBody, addressBody, emailBody, telephoneBody, idCompanyParams], type: sequelize.QueryTypes.UPDATE });
         return retorno;
     } catch (error) {
@@ -67,7 +67,8 @@ const deleteCompanySql = async(idCompanyParams) => {
     } catch (error) {
         res.status(500).send(error);
     }
-}
+};
+
 
 module.exports = {
     insertCompanySQL,

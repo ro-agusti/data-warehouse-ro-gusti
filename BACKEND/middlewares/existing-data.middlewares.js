@@ -1,4 +1,5 @@
 const { existingCompanyNameSql, existingCompanyEmailSql } = require("../helpers/companies.helpers");
+const { existingEmailContactSql, existingNameAndSurnameContactSql } = require("../helpers/contacts.helpers");
 const { existingRegionSQL, existingCountrySQL, existingCitySQL} = require("../helpers/location.helpers");
 const {existingEmailSQL } = require("../helpers/users.helpers");
 
@@ -71,6 +72,23 @@ const existingCompanyData = async(req,res,next) => {
     } catch (error) {
         res.status(500).send(error);
     }
+};
+
+const existingContactData = async(req, res, next) => {
+    try {
+        const {name, surname, position, email, address, interest} = req.body;
+        const confirmedEmail = await existingEmailContactSql(email);
+        const confirmedNameSurname = await existingNameAndSurnameContactSql(name, surname);
+        if (confirmedEmail.length > 0 ){
+            res.status(403).send('Existing contact email, change it to another one');
+        }else if (confirmedNameSurname.length > 0) {
+            res.status(403).send('Existing contact name and surname, change it to another one');
+        } else{
+            next();
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
 }
 
 module.exports = {
@@ -78,5 +96,6 @@ module.exports = {
     existingRegion,
     existingCountry,
     existingCity,
-    existingCompanyData
+    existingCompanyData,
+    existingContactData
 }

@@ -1,13 +1,15 @@
 const { Router } = require('express');
-const { postCompany, getCompanies, putCompany, deleteCompany } = require('../controllers/companies.controllers');
 const router = Router();
 
+//---IMPORTS
+const { postCompany, getCompanies, putCompany, deleteCompany } = require('../controllers/companies.controllers');
+const { postContact, getContacts, getContactsByCompany, putContact } = require('../controllers/contacts.controllers');
 const { postRegion, getRegions, putRegion, deleteRegion, postCountry, getCountries, putCountry, deleteCountry, postCity, getCities, putCity, deleteCity } = require('../controllers/location.controllers');
 const { postLogin, postUser } = require('../controllers/users.controllers');
-const { loginError, verifyToken, verifyRoleAdmin, verifyIDRegion, verifyIDCountry, verifyIDCity, verifyIDCityBody, verifyIDCompany } = require('../middlewares/data-error.middlewares');
-const { existingUser, existingRegion, existingCountry, existingCity, existingCompanyData } = require('../middlewares/existing-data.middlewares');
+const { loginError, verifyToken, verifyRoleAdmin, verifyIDRegion, verifyIDCountry, verifyIDCity, verifyIDCityBody, verifyIDCompany, verifyInterest, verifyIDCompanyInContacts, verifyIDContacts } = require('../middlewares/data-error.middlewares');
+const { existingUser, existingRegion, existingCountry, existingCity, existingCompanyData, existingContactData } = require('../middlewares/existing-data.middlewares');
 const { emailSyntaxError, weakPassword } = require('../middlewares/regular.expressions..middlewares');
-const { firstNameRequiredField, emailRequiredField, passwordRequiredField, lastNameRequiredField, profileRequiredField, countryRequiredField, regionNameRequiredField, countryNameRequiredField, countryIdRegionRequiredField, cityNameRequiredField, cityIdRegionRequiredField, companyNameRequiredField, companyIDcityRequiredField, companyAddressRequiredField, companyEmailRequiredField, companyTelephoneRequiredField } = require('../middlewares/required-field-middlewares');
+const { firstNameRequiredField, emailRequiredField, passwordRequiredField, lastNameRequiredField, profileRequiredField, countryRequiredField, regionNameRequiredField, countryNameRequiredField, countryIdRegionRequiredField, cityNameRequiredField, cityIdRegionRequiredField, companyNameRequiredField, companyIDcityRequiredField, companyAddressRequiredField, companyEmailRequiredField, companyTelephoneRequiredField, contactRequiredField } = require('../middlewares/required-field-middlewares');
 
 //---users---
 router.post('/login',
@@ -186,11 +188,41 @@ router.delete('/company/:idCompany',
 );
 
 //---contacts
-router.post('/contact',);
+router.post('/contact/:idCompany',
+    [
+        verifyToken,
+        verifyIDCompany,
+        contactRequiredField,
+        emailSyntaxError,
+        verifyInterest,
+        existingContactData
+    ],
+    postContact
+);
 
-router.get('/contact',);
+router.get('/contact',
+    [
+        verifyToken
+    ],
+    getContacts
+);
 
-router.put('/contact/:idContact',);
+router.get('/contact/:idCompany',
+    [
+        verifyToken,
+        verifyIDCompanyInContacts
+    ],
+    getContactsByCompany
+)
+
+router.put('/contact/:idContact',
+    [
+        verifyToken,
+        verifyIDContacts,
+        emailSyntaxError
+    ],
+    putContact
+);
 
 router.delete('/contact/:idContact',);
 

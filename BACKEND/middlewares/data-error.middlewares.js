@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { existingCompanyIDSql } = require('../helpers/companies.helpers');
+const { existingIdCompanyInContactSql, existingContactSql } = require('../helpers/contacts.helpers');
 const { existingRegionIDSql, existingCountryIDSql, existingCityIDSql } = require('../helpers/location.helpers');
 const { verifyDataSQL, verifyRoleDataSQL } = require('../helpers/users.helpers');
 
@@ -52,7 +53,7 @@ const verifyRoleAdmin = (req,res,next) => {
 //---location
 const verifyIDRegion = async(req,res,next) => {
     try {
-        const {idUser,idRegion} = req.params
+        const {idRegion} = req.params
         const confirmed = await existingRegionIDSql(idRegion);
         if (confirmed.length >0) {
             next();
@@ -66,7 +67,7 @@ const verifyIDRegion = async(req,res,next) => {
 
 const verifyIDCountry = async(req,res,next) => {
     try {
-        const {idUser,idCountry} = req.params
+        const {idCountry} = req.params
         const confirmed = await existingCountryIDSql(idCountry);
         if (confirmed.length >0) {
             next();
@@ -80,7 +81,7 @@ const verifyIDCountry = async(req,res,next) => {
 
 const verifyIDCity = async(req,res,next) => {
     try {
-        const {idUser,idCity} = req.params
+        const {idCity} = req.params
         const confirmed = await existingCityIDSql(idCity);
         if (confirmed.length >0) {
             next();
@@ -108,12 +109,57 @@ const verifyIDCityBody = async(req,res,next) => {
 
 const verifyIDCompany = async(req,res,next) => {
     try {
-        const {idUser, idCompany} = req.params;
+        const {idCompany} = req.params;
         const confirmed = await existingCompanyIDSql(idCompany);
         if (confirmed.length >0) {
             next();
         } else {
             res.status(403).send('wrong company ID');
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
+
+const verifyInterest = (req,res,next) => {
+    const {name, surname, position, email, address, interest} = req.body;
+    if (interest == '0'){
+        next();
+    } else if (interest == '25') {
+        next();  
+    } else if (interest == '50') {
+        next();
+    }else if (interest == '75') {
+        next();
+    } else if (interest == '100') {
+        next();
+    } else {     
+        return res.status(401).send('level of interest is worng');
+    }
+};
+
+const verifyIDCompanyInContacts = async(req,res,next) => {
+    try {
+        const {idCompany} = req.params;
+        const confirmed = await existingIdCompanyInContactSql(idCompany);
+        if (confirmed.length >0) {
+            next();
+        } else {
+            res.status(403).send('wrong company ID');
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
+
+const verifyIDContacts = async(req,res,next) => {
+    try {
+        const {idContact} = req.params;
+        const confirmed = await existingContactSql(idContact);
+        if (confirmed.length >0) {
+            next();
+        } else {
+            res.status(403).send('wrong contact ID');
         }
     } catch (error) {
         res.status(500).send(error);
@@ -128,5 +174,8 @@ module.exports = {
     verifyIDCountry,
     verifyIDCity,
     verifyIDCityBody,
-    verifyIDCompany
+    verifyIDCompany,
+    verifyInterest,
+    verifyIDCompanyInContacts,
+    verifyIDContacts
 }

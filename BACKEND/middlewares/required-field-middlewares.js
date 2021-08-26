@@ -142,6 +142,25 @@ const companyTelephoneRequiredField = (req, res, next) => {
     }
 };
 
+const contactRequiredField = (req, res, next) => {
+    const {name, surname, position, email, address, interest} = req.body;
+    if (!name) {
+        res.status(403).send('name still to be completed');
+    } else if (!surname){
+        res.status(403).send('surname still to be completed');
+    }else if (!position) {
+        res.status(403).send('position still to be completed');
+    }else if (!email) {
+        res.status(403).send('email still to be completed');
+    } else if (!address) {
+        res.status(403).send('address still to be completed');
+    } else if (!interest){
+        res.status(403).send('interest still to be completed');
+    }else{
+        next();
+    }
+};
+
 module.exports = {
     firstNameRequiredField,
     lastNameRequiredField,
@@ -158,5 +177,6 @@ module.exports = {
     companyIDcityRequiredField,
     companyAddressRequiredField,
     companyEmailRequiredField,
-    companyTelephoneRequiredField
+    companyTelephoneRequiredField,
+    contactRequiredField
 }
