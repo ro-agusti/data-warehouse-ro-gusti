@@ -161,6 +161,21 @@ const contactRequiredField = (req, res, next) => {
     }
 };
 
+const contactTypeRequiredField = (req, res, next) => {
+    const {contactType} = req.body;
+    contactType.forEach((el, index) =>{
+        if (!contactType[index].channel) {
+            return res.status(403).send('channel still to be completed');
+        } else if (!contactType[index].account){
+            return res.status(403).send('account still to be completed');
+        } else if (!contactType[index].preference){
+            return res.status(403).send('preference still to be completed');
+        }else{
+            next();
+        }
+    })
+};
+
 module.exports = {
     firstNameRequiredField,
     lastNameRequiredField,
@@ -178,5 +193,6 @@ module.exports = {
     companyAddressRequiredField,
     companyEmailRequiredField,
     companyTelephoneRequiredField,
-    contactRequiredField
+    contactRequiredField,
+    contactTypeRequiredField
 }

@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { existingCompanyIDSql } = require('../helpers/companies.helpers');
+const { existingContactTypeIDSql } = require('../helpers/contact-type.helpers');
 const { existingIdCompanyInContactSql, existingContactSql } = require('../helpers/contacts.helpers');
 const { existingRegionIDSql, existingCountryIDSql, existingCityIDSql } = require('../helpers/location.helpers');
 const { verifyDataSQL, verifyRoleDataSQL } = require('../helpers/users.helpers');
@@ -166,6 +167,80 @@ const verifyIDContacts = async(req,res,next) => {
     }
 };
 
+const verifyChannel = (req,res,next) => {
+    let {contactType} = req.body;
+    contactType.forEach((el, index) => {
+        if (contactType[index].channel = 'INSTAGRAM') {
+            next();  
+        } else if (contactType[index].channel = 'FACEBOOK') {
+            next();
+        }else if (contactType[index].channel = 'WHATSAPP') {
+            next();
+        } else if (contactType[index].channel = 'TWITTER') {
+            next();
+        } else if (contactType[index].channel = 'EMAIL'){ 
+            next();    
+        }else {
+            return res.status(401).send('wrong communication channel');
+        }
+    })
+};
+
+const verifyPreference = (req,res,next) => {
+    let {contactType} = req.body;
+    contactType.forEach((el, index) => {
+        if (contactType[index].preference == 'NO MOLESTAR') {
+            next();  
+        } else if (contactType[index].preference == 'FAVORITO') {
+            next();
+        }else {
+            return res.status(401).send('wrong preference channel');
+        }
+    })
+};
+
+const verifyIDContactType = async(req,res,next) => {
+    try {
+        const { idContact, idContactType} = req.params;
+        const confirmed = await existingContactTypeIDSql(idContactType);
+        if (confirmed.length >0) {
+            next();
+        } else {
+            res.status(403).send('wrong contact type ID');
+        }
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
+
+const verifyChannelObject = (req, res, next) => {
+    let {channel, account, preference} = req.body;
+    if (channel = 'INSTAGRAM') {
+        next();  
+    } else if (channel = 'FACEBOOK') {
+        next();
+    }else if (channel = 'WHATSAPP') {
+        next();
+    } else if (channel = 'TWITTER') {
+        next();
+    } else if (channel = 'EMAIL'){ 
+        next();    
+    }else {
+        return res.status(401).send('wrong communication channel');
+    }
+};
+
+const verifyPreferenceObject = (req,res,next) => {
+    let {channel, account, preference} = req.body;
+    if (preference == 'NO MOLESTAR') {
+        next();  
+    } else if (preference == 'FAVORITO') {
+        next();
+    }else {
+        return res.status(401).send('wrong preference channel');
+    }
+}
+
 module.exports = {
     loginError,
     verifyToken,
@@ -177,5 +252,10 @@ module.exports = {
     verifyIDCompany,
     verifyInterest,
     verifyIDCompanyInContacts,
-    verifyIDContacts
+    verifyIDContacts,
+    verifyChannel,
+    verifyPreference,
+    verifyIDContactType,
+    verifyChannelObject,
+    verifyPreferenceObject
 }

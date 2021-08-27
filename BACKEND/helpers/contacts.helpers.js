@@ -1,7 +1,6 @@
 const sequelize = require('../database/connection.database.js');
 
-/* const {idCompany} = req.params;
-    const {name, surname, position, email, address, interest} = req.body; */
+
 const insertContactSql = async(nameBody, surnameBody, positionBody, emailBody, addressBody, idCompanyParams, interestBody) => {
     try {     
         const retorno = await sequelize.query('INSERT INTO `contacts` (`contact_first_name`, `contact_last_name`, `contact_position`, `contact_email`, `contact_address`, `ID_company`, `contact_interest`) VALUES (?, ?, ?, ? ,?, ?, ?)',
@@ -34,7 +33,7 @@ const existingNameAndSurnameContactSql = async(nameBody, surnameBody) => {
 
 const selectContactsSql = async() => {
     try {
-        const retorno = await sequelize.query('SELECT * FROM `contacts`',
+        const retorno = await sequelize.query('SELECT contacts.contact_first_name, contacts.contact_last_name, contacts.contact_position, contacts.contact_email, contacts.contact_address, companies.company_name, contacts.contact_interest FROM contacts, companies WHERE contacts.ID_company = companies.ID_company',
             { type: sequelize.QueryTypes.SELECT })
         return retorno;
     } catch (error) {
@@ -44,7 +43,7 @@ const selectContactsSql = async() => {
 
 const selectContactsByCompanySql = async(idCompanyParams) => {
     try {
-        const retorno = await sequelize.query('SELECT * FROM `contacts` WHERE `ID_company` = ?',
+        const retorno = await sequelize.query('SELECT contacts.contact_first_name, contacts.contact_last_name, contacts.contact_position, contacts.contact_email, contacts.contact_address, companies.company_name, contacts.contact_interest FROM contacts, companies WHERE contacts.ID_company = companies.ID_company AND companies.ID_company = ?',
             { replacements: [idCompanyParams], type: sequelize.QueryTypes.SELECT })
         return retorno;
     } catch (error) {
@@ -82,6 +81,15 @@ const updateContactSql = async( positionBody, emailBody, addressBody, interestBo
     }
 };
 
+const deleteContactSql = async(idConactParams) => {
+    try {
+        const retorno = await sequelize.query('DELETE FROM `contacts` WHERE `ID_contact` = ?',
+        {replacements:[idConactParams], type:sequelize.QueryTypes.DELETE})
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
 module.exports = {
     insertContactSql,
     existingEmailContactSql,
@@ -90,5 +98,6 @@ module.exports = {
     selectContactsByCompanySql,
     existingIdCompanyInContactSql,
     existingContactSql,
-    updateContactSql
+    updateContactSql,
+    deleteContactSql
 }

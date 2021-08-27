@@ -1,4 +1,4 @@
-const { insertContactSql, selectContactsSql, selectContactsByCompanySql, updateContactSql } = require("../helpers/contacts.helpers");
+const { insertContactSql, selectContactsSql, selectContactsByCompanySql, updateContactSql, deleteContactSql } = require("../helpers/contacts.helpers");
 
 const postContact = async(req,res) => {
     try {
@@ -51,11 +51,25 @@ const putContact = async(req,res) => {
     } catch (error) {
         res.status(500).send(error);
     }
+};
+
+const deleteContact = async(req,res) => {
+    try {
+        const {idContact} = req.params
+        await deleteContactSql(idContact);
+        respuesta = {
+            mensaje: 'contact removed'
+        }
+        res.status(200).send(respuesta);
+    } catch (error) {
+        res.status(500).send(error);
+    }
 }
 
 module.exports= {
     postContact,
     getContacts,
     getContactsByCompany,
-    putContact
+    putContact,
+    deleteContact
 }
