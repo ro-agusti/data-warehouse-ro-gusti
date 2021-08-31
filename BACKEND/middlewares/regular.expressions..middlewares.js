@@ -5,7 +5,7 @@ const emailSyntaxError = (req,res,next) => {
     if(emailRegex.test(email)){
         next();
     }else{
-        res.status(403).send('Email con formato incorrecto');
+        res.status(403).send({error:'Email con formato incorrecto'});
     }
 };
 const weakPassword = (req,res,next) => {
@@ -14,7 +14,7 @@ const weakPassword = (req,res,next) => {
     if (passwordRegex.test(password)) {
         next();
     } else {
-        res.status(403).send('Contraseña Debil (debe contener al menos: una letra minuscula, una letra mayuscula, un numero, un caracter especial y tener al menos 8 caracteres)');
+        res.status(403).send({error:'Contraseña Debil (debe contener al menos: una letra minuscula, una letra mayuscula, un numero, un caracter especial y tener al menos 8 caracteres)'});
     }
 }
 

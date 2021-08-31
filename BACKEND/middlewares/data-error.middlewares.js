@@ -13,7 +13,7 @@ const loginError = async (req, res, next) => {
         if (confirmed.length > 0) {
             next();
         } else {
-            res.status(403).send('wrong data');
+            res.status(403).send({error:'wrong data'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -24,15 +24,15 @@ const loginError = async (req, res, next) => {
 const verifyToken = (req, res, next) => {
     const { authorization } = req.headers;
     if (!authorization) {
-        return res.status(401).send('you need a token');
+        return res.status(401).send({error:'you need a token'});
     }
     const token = authorization.split(' ')[1];
     if (!token) {
-        return res.status(401).send('you need a token');
+        return res.status(401).send({error:'you need a token'});
     }
     jwt.verify(token, process.env.SECRET, (error) => {
         if (error) {
-            return res.status(401).send('invalid token');
+            return res.status(401).send({error:'invalid token'});
         } else {
             next();
         }
@@ -44,7 +44,7 @@ const verifyRoleAdmin = (req,res,next) => {
     const tokenSended = authorization.split(' ')[1]
     const jwtDecode = jwt.decode(tokenSended, process.env.SECRET);
     if (jwtDecode.role !== 'ADMIN') {
-        return res.status(401).send('unauthorized user');
+        return res.status(401).send({error:'unauthorized user'});
     } else {
         req.admin= jwtDecode
         next();
@@ -59,7 +59,7 @@ const verifyIDRegion = async(req,res,next) => {
         if (confirmed.length >0) {
             next();
         } else {
-            res.status(403).send('wrong region ID');
+            res.status(403).send({error:'wrong region ID'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -73,7 +73,7 @@ const verifyIDCountry = async(req,res,next) => {
         if (confirmed.length >0) {
             next();
         } else {
-            res.status(403).send('wrong country ID');
+            res.status(403).send({error:'wrong country ID'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -87,7 +87,7 @@ const verifyIDCity = async(req,res,next) => {
         if (confirmed.length >0) {
             next();
         } else {
-            res.status(403).send('wrong city ID');
+            res.status(403).send({error:'wrong city ID'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -101,7 +101,7 @@ const verifyIDCityBody = async(req,res,next) => {
         if (confirmed.length >0) {
             next();
         } else {
-            res.status(403).send('wrong city ID');
+            res.status(403).send({error:'wrong city ID'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -115,7 +115,7 @@ const verifyIDCompany = async(req,res,next) => {
         if (confirmed.length >0) {
             next();
         } else {
-            res.status(403).send('wrong company ID');
+            res.status(403).send({error:'wrong company ID'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -135,9 +135,26 @@ const verifyInterest = (req,res,next) => {
     } else if (interest == '100') {
         next();
     } else {     
-        return res.status(401).send('level of interest is worng');
+        return res.status(401).send({error:'level of interest is worng'});
     }
 };
+
+const verifyInterestParams = async(req,res,next) =>{
+    const {interest} = req.params;
+    if (interest == 0){
+        next();
+    } else if (interest == 25) {
+        next();  
+    } else if (interest == 50) {
+        next();
+    }else if (interest == 75) {
+        next();
+    } else if (interest == 100) {
+        next();
+    } else {     
+        return res.status(401).send({error:'level of interest is worng'});
+    }
+}
 
 const verifyIDCompanyInContacts = async(req,res,next) => {
     try {
@@ -146,7 +163,7 @@ const verifyIDCompanyInContacts = async(req,res,next) => {
         if (confirmed.length >0) {
             next();
         } else {
-            res.status(403).send('wrong company ID');
+            res.status(403).send({error:'wrong company ID'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -160,7 +177,7 @@ const verifyIDContacts = async(req,res,next) => {
         if (confirmed.length >0) {
             next();
         } else {
-            res.status(403).send('wrong contact ID');
+            res.status(403).send({error:'wrong contact ID'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -181,7 +198,7 @@ const verifyChannel = (req,res,next) => {
         } else if (contactType[index].channel = 'EMAIL'){ 
             next();    
         }else {
-            return res.status(401).send('wrong communication channel');
+            return res.status(401).send({error:'wrong communication channel'});
         }
     })
 };
@@ -194,7 +211,7 @@ const verifyPreference = (req,res,next) => {
         } else if (contactType[index].preference == 'FAVORITO') {
             next();
         }else {
-            return res.status(401).send('wrong preference channel');
+            return res.status(401).send({error:'wrong preference channel'});
         }
     })
 };
@@ -206,7 +223,7 @@ const verifyIDContactType = async(req,res,next) => {
         if (confirmed.length >0) {
             next();
         } else {
-            res.status(403).send('wrong contact type ID');
+            res.status(403).send({error:'wrong contact type ID'});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -226,7 +243,7 @@ const verifyChannelObject = (req, res, next) => {
     } else if (channel = 'EMAIL'){ 
         next();    
     }else {
-        return res.status(401).send('wrong communication channel');
+        return res.status(401).send({error:'wrong communication channel'});
     }
 };
 
@@ -237,9 +254,9 @@ const verifyPreferenceObject = (req,res,next) => {
     } else if (preference == 'FAVORITO') {
         next();
     }else {
-        return res.status(401).send('wrong preference channel');
+        return res.status(401).send({error:'wrong preference channel'});
     }
-}
+};
 
 module.exports = {
     loginError,
@@ -251,6 +268,7 @@ module.exports = {
     verifyIDCityBody,
     verifyIDCompany,
     verifyInterest,
+    verifyInterestParams,
     verifyIDCompanyInContacts,
     verifyIDContacts,
     verifyChannel,

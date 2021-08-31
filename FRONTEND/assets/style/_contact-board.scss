@@ -1,5 +1,8 @@
+/* .contact-board{
+  position: relative;
+} */
 .table {
-  width: 100%;
+  width: 96vw;
   margin-top: 73px;
   margin-left: 27px;
   margin-right: 27px;
@@ -28,6 +31,9 @@
         color: $dark-grey;
       }
     }
+    .td-checkbox{
+      cursor: pointer;
+    }
     .td-contact {
       height: 56px;
       padding-left: 16.7px;
@@ -46,8 +52,8 @@
           font-weight: bold;
           color: $dark-grey;
         }
-        .subtitle{
-            font-size: 11px;
+        .subtitle {
+          font-size: 11px;
           font-weight: bold;
           color: $light-grey;
         }
@@ -62,36 +68,94 @@
           font-weight: bold;
           color: $dark-grey;
         }
-        .subtitle{
-            font-size: 11px;
+        .subtitle {
+          font-size: 11px;
           font-weight: bold;
           color: $light-grey;
         }
       }
     }
-    .td-general{
+    .td-general {
       .title {
         font-size: 12px;
         font-weight: bold;
         color: $dark-grey;
       }
     }
-    .td-preferencias{
+    /* .td-preferencias{
       display: flex;
       justify-content: start;
       .td-preferencias_preferencia{
         width: 64px;
         height: 24px;
-        background-color: $light-blue;
+        background-color: $yellow;
         display: flex;
         margin: 3px;
         h6{
           margin: auto;
-          color: $color-light-blue;
+          color: $yellow;
           font-size: 10px;
           font-family: $font;
         }
       }
+    } */
+    .td-interes {
+      .td-interes_div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        h6 {
+          font-size: 10px;
+          font-family: $font;
+          font-weight: bold;
+          color: $dark-grey;
+        }
+        .level-interest {
+          width: 100px;
+          height: 5px;
+          border: solid 1px $dark-grey;
+          border-radius: 5px;
+          position: relative;
+          span {
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background-color: $yellow;
+          }
+        }
+      }
+    }
+    .td-acciones {
+      //padding: 10px;
+      display: flex;
+      justify-content: start;
+      //align-items: flex-start;
+      button {
+        width: 30px;
+        height: 30px;
+        border-radius: 15px;
+        background-color: $yellow;
+        margin-right: 15px;
+        cursor: pointer;
+        &:hover {
+          background-color: $dark-grey;
+        }
+        i {
+          margin: auto;
+          color: $dark-grey;
+          &:hover {
+            color: $yellow;
+          }
+        }
+      }
+      .delete-acciones {
+        transform: rotate(270deg);
+      }
+    }
+  }
+  .contact-table{
+    &:hover{
+      background-color: $bg-grey;
     }
   }
 }

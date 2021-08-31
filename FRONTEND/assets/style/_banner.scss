@@ -3,7 +3,8 @@
   justify-content: space-between;
   padding-right: 28px;
   padding-left: 28px;
-  width: 100%;
+  //position: relative;
+  //width: 100vw;
   .left {
     margin-top: 39px;
     .title {
@@ -43,10 +44,13 @@
         background: none;
         border: solid 1px $light-grey;
         border-radius: 7px;
+        &:hover{
+          background: $dark-grey;
+        }
         i {
           width: 17.5px;
-          height: 17.5;
-          color: $blue;
+         // height: 17.5px;
+          color: $yellow;
         }
       }
     }
@@ -56,15 +60,15 @@
     justify-content: space-between;
     margin-top: 77.5px;
     //margin-left: 0;
-    .upload {
+    /* .upload {
       margin-left: 9px;
       width: 41px;
       height: 41px;
       background: none;
-      border: solid 1px $blue;
+      border: solid 1px $yellow;
       border-radius: 7px;
-    }
-    .exp-contact {
+    } */
+    /* .exp-contact {
       padding-left: 15.9px;
       padding-right: 15.9px;
       display: flex;
@@ -74,26 +78,31 @@
       width: 172px;
       height: 41px;
       background: none;
-      border: solid 1px $blue;
+      border: solid 1px $yellow;
       border-radius: 7px;
-      color: $blue;
+      color: $yellow;
       font-family: $font;
       font-size: 13.7px;
       font-weight: bold;
-    }
-    .ad-contact {
+    } */
+    .btn-add-contact {
       padding-left: 15.9px;
       padding-right: 15.9px;
       margin-left: 9px;
       width: 172px;
       height: 41px;
-      border: solid 1px $blue;
-      background: $blue;
+      border: solid 1px $yellow;
+      background: $yellow;
       border-radius: 7px;
-      color: $white;
+      color: $dark-grey;
       font-family: $font;
       font-size: 13.7px;
       font-weight: bold;
+      &:hover{
+        background: $dark-grey;
+        color: $yellow;
+        font-size: 14.7px;
+      }
     }
   }
 }

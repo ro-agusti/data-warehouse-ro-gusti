@@ -8,7 +8,7 @@ const existingUser = async(req,res,next) => {
     try {
         const confirmed = await existingEmailSQL(req.body)
         if (confirmed.length >0) {
-            res.status(403).send('Existing email, change it to another one');
+            res.status(403).send({error:'Existing email, change it to another one'});
         } else {
             next();
         }
@@ -22,7 +22,7 @@ const existingRegion = async(req,res,next) => {
     try {
         const confirmed = await existingRegionSQL(req.body)
         if (confirmed.length >0) {
-            res.status(403).send('Existing region, change it to another one');
+            res.status(403).send({error:'Existing region, change it to another one'});
         } else {
             next();
         }
@@ -35,7 +35,7 @@ const existingCountry = async(req,res,next) => {
     try {
         const confirmed = await existingCountrySQL(req.body)
         if (confirmed.length >0) {
-            res.status(403).send('Existing country, change it to another one');
+            res.status(403).send({error:'Existing country, change it to another one'});
         } else {
             next();
         }
@@ -48,7 +48,7 @@ const existingCity = async(req,res,next) => {
     try {
         const confirmed = await existingCitySQL(req.body)
         if (confirmed.length >0) {
-            res.status(403).send('Existing city, change it to another one');
+            res.status(403).send({error:'Existing city, change it to another one'});
         } else {
             next();
         }
@@ -63,9 +63,9 @@ const existingCompanyData = async(req,res,next) => {
         const confirmedName = await existingCompanyNameSql(name);
         const confirmedEmail = await existingCompanyEmailSql(email);
         if (confirmedName.length > 0) {
-            res.status(403).send('Existing company name, change it to another one');
+            res.status(403).send({error:'Existing company name, change it to another one'});
         } else if (confirmedEmail.length > 0 ){
-            res.status(403).send('Existing company email, change it to another one');
+            res.status(403).send({error:'Existing company email, change it to another one'});
         }else {
             next();
         }
@@ -80,9 +80,9 @@ const existingContactData = async(req, res, next) => {
         const confirmedEmail = await existingEmailContactSql(email);
         const confirmedNameSurname = await existingNameAndSurnameContactSql(name, surname);
         if (confirmedEmail.length > 0 ){
-            res.status(403).send('Existing contact email, change it to another one');
+            res.status(403).send({error:'Existing contact email, change it to another one'});
         }else if (confirmedNameSurname.length > 0) {
-            res.status(403).send('Existing contact name and surname, change it to another one');
+            res.status(403).send({error:'Existing contact name and surname, change it to another one'});
         } else{
             next();
         }

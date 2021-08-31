@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const morgan = require('morgan');
 require('dotenv').config();
 
 const sequelize = require('../database/connection.database.js');
@@ -19,6 +20,7 @@ class Server {
         this.app.use(express.json())
         this.app.use(express.static('public'))
         this.app.use(helmet())
+        this.app.use(morgan());
     }
     routes(){
         this.app.use(this.routeAPI,require('../routes/api.routes.js'))

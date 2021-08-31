@@ -51,6 +51,16 @@ const selectContactsByCompanySql = async(idCompanyParams) => {
     }
 };
 
+const selectContactsByInterestSql = async(interestParams) => {
+    try {
+        const retorno = await sequelize.query('SELECT contacts.contact_first_name, contacts.contact_last_name, contacts.contact_position, contacts.contact_email, contacts.contact_address, companies.company_name, contacts.contact_interest FROM contacts, companies WHERE contacts.ID_company = companies.ID_company AND contacts.contact_interest = ?;',
+            { replacements: [interestParams], type: sequelize.QueryTypes.SELECT })
+        return retorno;
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+
 const existingIdCompanyInContactSql = async(emailBody) => {
     try {
         const retorno = await sequelize.query('SELECT * FROM `contacts` WHERE `ID_company` = ?',
@@ -88,7 +98,7 @@ const deleteContactSql = async(idConactParams) => {
     } catch (error) {
         res.status(500).send(error);
     }
-}
+};
 
 module.exports = {
     insertContactSql,
@@ -96,6 +106,7 @@ module.exports = {
     existingNameAndSurnameContactSql,
     selectContactsSql,
     selectContactsByCompanySql,
+    selectContactsByInterestSql,
     existingIdCompanyInContactSql,
     existingContactSql,
     updateContactSql,

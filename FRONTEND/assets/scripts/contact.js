@@ -1,5 +1,12 @@
-const contact = document.getElementById('contact');
+/* const banner = document.getElementById('banner'); */
 
-contact.addEventListener('click', () => {
-    contact.classList.toggle('li-selected');
+
+contactMenu.addEventListener('click', () => {
+    contactMenu.classList.add('li-selected');
+    banner.classList.remove('hidden');
+    contactBoard.classList.remove('hidden');
+});
+
+addContact.addEventListener('click', () => {
+    
 })

@@ -1,0 +1,178 @@
+.nuevo-contacto {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: $dark-grey-trans;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .nuevo-contacto-contenedor {
+    width: 80%;
+    height: 100px;
+    background-color: $dark-grey;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 30px;
+    h2 {
+      font-family: $font;
+      color: $yellow;
+    }
+    i {
+      color: $yellow;
+      font-size: 20px;
+      &:hover {
+        font-size: 25px;
+        color: $light-grey;
+      }
+    }
+  }
+  .datos-nuevo-contacto {
+    width: 80%;
+    height: 100px;
+    transform: translateY(-87px);
+    background-color: $light-grey;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px;
+    border-radius: 30px;
+    z-index: 12;
+    div {
+      label {
+        font-family: $font;
+        color: $dark-grey;
+        font-size: 12px;
+      }
+      input {
+        margin-top: 5px;
+        border: solid 1px $dark-grey;
+        background: none;
+        border-radius: 20px;
+        height: 15px;
+        padding: 10px;
+        color: $dark-grey;
+        font-size: 12px;
+      }
+      select {
+        margin-top: 5px;
+        border: solid 1px $dark-grey;
+        background: $light-grey;
+        border-radius: 20px;
+        height: 15px;
+        padding: 10px;
+        color: $dark-grey;
+        font-size: 12px;
+      }
+    }
+  }
+  .nuevo-contacto-varios {
+    width: 80%;
+    height: 200px;
+    background-color: $dark-grey;
+    display: flex;
+    flex-direction: column;
+    //justify-content: space-evenly;
+    padding: 15px;
+    padding-top: 85px;
+    border-radius: 30px;
+    transform: translateY(-150px);
+    .datos-nuevo-contacto-opcional {
+      display: flex;
+      //justify-content: space-evenly;
+      div {
+        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        label {
+          font-family: $font;
+          color: $light-grey;
+          font-size: 12px;
+        }
+        select {
+          margin-top: 5px;
+          border: solid 1px $light-grey;
+          background: $dark-grey;
+          border-radius: 20px;
+          height: 15px;
+          width: 130px;
+          padding: 10px;
+          color: $light-grey;
+          font-size: 12px;
+        }
+        input {
+          margin-top: 5px;
+          border: solid 1px $light-grey;
+          background: none;
+          border-radius: 20px;
+          height: 15px;
+          padding: 10px;
+          color: $light-grey;
+          font-size: 12px;
+        }
+      }
+    }
+    .nuevo-contacto-canal-contacto{
+      display: flex;
+      //justify-content: space-evenly;
+      margin-top: 25px;
+      div{
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+        label{
+          font-family: $font;
+          color: $light-grey;
+          font-size: 12px;
+        }
+        select {
+          margin-top: 5px;
+          border: solid 1px $light-grey;
+          background: $dark-grey;
+          border-radius: 20px;
+          height: 15px;
+          width: 130px;
+          padding: 10px;
+          color: $light-grey;
+          font-size: 12px;
+        }
+        input{
+          margin-top: 5px;
+          border: solid 1px $light-grey;
+          background: none;
+          border-radius: 20px;
+          height: 15px;
+          padding: 10px;
+          color: $light-grey;
+          font-size: 12px;
+        }
+      }
+      .add-canal{
+        margin-top: 18px;
+        width: 40px;
+        height: 40px;
+        background: $bg-grey;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i{
+          color: $dark-grey;
+          font-size: 25px;
+          &:hover{
+            color: $yellow;
+          }
+        }
+      }
+    }
+  }
+  .agregar-nuevo-contacto{
+    width: 80%;
+    height: 100px;
+    background-color: red;
+    margin-top: 0;
+  }
+}

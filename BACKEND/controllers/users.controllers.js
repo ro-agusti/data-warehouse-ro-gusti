@@ -14,7 +14,8 @@ const postLogin = async(req,res) => {
         const token = jwt.sign(signedObject, process.env.SECRET);
         respuesta = {
             mensaje: 'successful sign in',
-            respuesta: token
+            respuesta: token,
+            role: signedObject.role
         };
         res.status(200).send(respuesta);
     } catch (error) {

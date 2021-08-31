@@ -12,14 +12,14 @@
 </head>
 
 <body>
-    <header class="header">
+    <header class="hidden header" id="header">
         <nav class="menu" id="menu">
             <h2 class="logo">LOGO</h2>
             <div class="menu-div" id="menu-div">
                 <ul class="menu-ul " id="menu-ul">
-                    <li id="contact" >contactos</li>
+                    <li id="contact">contactos</li>
                     <li id="companies">usuarios</li>
-                    <li id="users">compañias</li>
+                    <li id="users" class="hidden">compañias</li>
                     <li id="location">region/ciudad</li>
                 </ul>
             </div>
@@ -27,16 +27,16 @@
         <div class="header-line"></div>
     </header>
     <main>
-        <section class="hidden login">
+        <section class=" login" id="login">
             <div class="login-div">
-                <h3 class="login-subtitle">USUARIO</h3>
-                <input type="text" class="input-login" id="username-login">
+                <h3 class="login-subtitle">EMAIL</h3>
+                <input type="text" class="input-login" id="email-login">
                 <h3 class="login-subtitle">CONTRASEÑA</h3>
                 <input type="password" class="input-login" id="password-login">
                 <button class="button-login" id="button-login">INGRESAR</button>
             </div>
         </section>
-        <section class="hidden banner">
+        <section class="hidden banner" id="banner">
             <div class="left">
                 <h1 class="title">Contactos</h1>
                 <div class="search">
@@ -48,25 +48,35 @@
                 </div>
             </div>
             <div class="right">
-                <button class="upload"></button>
-                <button class="exp-contact">Exportar contactos<i class="fas fa-sort-down"></i></button>
-                <button class="ad-contact">Agregar contacto</button>
+                <!-- <button class="upload"></button> -->
+                <!-- <button class="exp-contact">Exportar contactos<i class="fas fa-sort-down"></i></button> -->
+                <button class="btn-add-contact" id="btnAddContact">Agregar contacto</button>
             </div>
         </section>
-        <section class="hidden contact-board">
+        <section class="hidden contact-board" id="contact-board">
             <table class="table">
                 <tr class="titles-table">
-                    <td><input type="checkbox"></td>
-                    <td>Contacto<i class="fas fa-exchange-alt"></i></td>
-                    <td>Pais/Region<i class="fas fa-exchange-alt"></i></td>
-                    <td>Compañia<i class="fas fa-exchange-alt"></i></td>
-                    <td>Cargo<i class="fas fa-exchange-alt"></i></td>
-                    <td>Canal preferido</td>
-                    <td>Interes<i class="fas fa-exchange-alt"></i></td>
+                    <td><input type="checkbox" class="td-checkbox"></td>
+                    <td>Contacto
+                        <!-- <i class="fas fa-exchange-alt"></i> -->
+                    </td>
+                    <td>Pais/Region
+                        <!-- <i class="fas fa-exchange-alt"></i> -->
+                    </td>
+                    <td>Compañia
+                        <!-- <i class="fas fa-exchange-alt"></i> -->
+                    </td>
+                    <td>Cargo
+                        <!-- <i class="fas fa-exchange-alt"></i> -->
+                    </td>
+                    <!-- <td>Canal preferido</td> -->
+                    <td>Interes
+                        <!-- <i class="fas fa-exchange-alt"></i> -->
+                    </td>
                     <td>Acciones</td>
                 </tr>
-                <tr>
-                    <td><input type="checkbox"></td>
+                <tr class="contact-table">
+                    <td><input type="checkbox" class="td-checkbox"></td>
                     <td class="td-contact">
                         <img src="./assets/img/user-default.svg" alt="img-contacto" class="img-contact">
                         <div class="text-contact">
@@ -86,24 +96,126 @@
                     <td class="td-general">
                         <h5 class="title">UX Designer</h5>
                     </td>
-                    <td class="td-preferencias">
+                    <!-- <td class="td-preferencias">
                         <div class="td-preferencias_preferencia">
                             <h6>Facebook</h6>
                         </div>
                         <div class="td-preferencias_preferencia">
                             <h6>Instagram</h6>
                         </div>
-                    </td>
+                    </td> -->
                     <td class="td-interes">
                         <div class="td-interes_div">
                             <h6>100%</h6>
+                            <div class="level-interest"><span></span></div>
                         </div>
                     </td>
-                    <td>Acciones</td>
+                    <td class="td-acciones">
+                        <button class="edit-acciones"><i class="fas fa-edit"></i></button>
+                        <button class="delete-acciones"><i class="fas fa-trash-alt "></i></button>
+                    </td>
                 </tr>
             </table>
         </section>
+        <section class="nuevo-contacto" id="accContact">
+            <div class="nuevo-contacto-contenedor">
+                <h2>NUEVO CONTACTO</h2>
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="datos-nuevo-contacto">
+                <div>
+                    <label for="name">NOMBRE*</label>
+                    <input type="text" name="name" id="newContactName">
+                </div>
+                <div>
+                    <label for="surname">APELLIDO*</label>
+                    <input type="text" name="surname" id="newContactSurname">
+                </div>
+                <div>
+                    <label for="profile">CARGO*</label>
+                    <input type="text" name="profile" id="newContactProfile">
+                </div>
+                <div>
+                    <label for="email">EMAIL*</label>
+                    <input type="email" name="email" id="newContactEmail">
+                </div>
+                <div>
+                    <label for="company">COMPAÑIA*</label>
+                    <select name="company" id="newContactCompany">
+                        <option value="McDonalds">McDonalds</option>
+                    </select>
+                </div>
+            </div>
+            <div class="nuevo-contacto-varios">
+                <div class="datos-nuevo-contacto-opcional">
+                    <div>
+                        <label for="region">REGION</label>
+                        <select name="region" id="newContactRegion">
+                            <option value="Sudamerica">Sudamerica</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="country">PAIS</label>
+                        <select name="country" id="newContactCountry">
+                            <option value="arg">Argenitna</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="city">CIUDAD</label>
+                        <select name="city" id="newContactCity">
+                            <option value="Cor">Cordoba</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="address">DIRECCION</label>
+                        <input type="text" name="address" id="newContactAddress">
+                    </div>
+                    <div>
+                        <label for="interest">INTERES*</label>
+                        <select name="interest" id="newContactInterest">
+                            <option value="0">0%</option>
+                            <option value="25">25%</option>
+                            <option value="50">50%</option>
+                            <option value="75">75%</option>
+                            <option value="100">100%</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="nuevo-contacto-canal-contacto">
+                    <div>
+                        <label for="contactType">CANAL DE CONTACTO</label>
+                        <select name="contactType" id="newContactContactType">
+                            <option value="instagram">INSTAGRAM</option>
+                            <option value="facebook">FACEBOOK</option>
+                            <option value="twitter">TWITTER</option>
+                            <option value="whatsapp">WHATSAPP</option>
+                            <option value="email">EMAIL</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="account">CANAL DE USUARIO</label>
+                        <input type="text" name="account" id="newContactAccount">
+                    </div>
+                    <div>
+                        <label for="preference">PREFERENCIAS</label>
+                        <select name="preference" id="newContactpreference">
+                            <option value="noMolstar">NO MOLESTAR</option>
+                            <option value="favorito">FAVORITO</option>
+                        </select>
+                    </div>
+                    <div class="add-canal">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="agregar-nuevo-contacto">
+                <button class="bton-crear-contacto">CREAR CONTACTO</button>
+            </div>
+        </section>
     </main>
+    <script src="./assets/scripts/const.ID.js"></script>
     <script src="./assets/scripts/login.js"></script>
+    <script src="./assets/scripts/contact.js"></script>
 </body>
+
 </html>
