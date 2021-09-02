@@ -88,7 +88,7 @@
   margin-top: 70px;
 }
 
-.login .login-div {
+.login .form-div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -106,14 +106,14 @@
   border-radius: 15px;
 }
 
-.login .login-div .login-subtitle {
+.login .form-div .form-subtitle {
   margin-top: 50px;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   color: #707070;
 }
 
-.login .login-div .input-login {
+.login .form-div .input-form {
   margin-top: 20px;
   width: 300px;
   height: 30px;
@@ -124,7 +124,7 @@
   font-size: 15px;
 }
 
-.login .login-div .button-login {
+.login .form-div .button-form {
   width: 150px;
   height: 45px;
   margin-top: 20px;
@@ -138,7 +138,7 @@
   font-weight: bold;
 }
 
-.login .login-div .button-login:hover {
+.login .form-div .button-form:hover {
   background-color: #fbd41d;
   border: solid 1px #fbd41d;
   color: #707070;
@@ -705,10 +705,93 @@
 }
 
 .nuevo-contacto .agregar-nuevo-contacto {
+  -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
   width: 80%;
-  height: 100px;
-  background-color: red;
-  margin-top: 0;
+}
+
+.nuevo-contacto .agregar-nuevo-contacto .btn-crear-contacto {
+  width: 172px;
+  height: 41px;
+  border: solid 1px #fbd41d;
+  background: #fbd41d;
+  border-radius: 7px;
+  color: #707070;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13.7px;
+  font-weight: bold;
+}
+
+.nuevo-contacto .agregar-nuevo-contacto .btn-crear-contacto:hover {
+  background: #707070;
+  color: #fbd41d;
+  font-size: 14.7px;
+}
+
+.nuevo-usuario {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 70px;
+}
+
+.nuevo-usuario .form-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  width: 400px;
+  border: solid 1px #707070;
+  border-radius: 15px;
+}
+
+.nuevo-usuario .form-div .form-subtitle {
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #707070;
+}
+
+.nuevo-usuario .form-div .input-form {
+  margin-top: 10px;
+  width: 300px;
+  height: 30px;
+  border: solid 1px #707070;
+  border-radius: 30px;
+  padding: 10px;
+  color: #707070;
+  font-size: 15px;
+}
+
+.nuevo-usuario .form-div .button-form {
+  width: 150px;
+  height: 45px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #707070;
+  color: #fbd41d;
+  border: solid 1px #707070;
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nuevo-usuario .form-div .button-form:hover {
+  background-color: #fbd41d;
+  border: solid 1px #fbd41d;
+  color: #707070;
 }
 
 .hidden {

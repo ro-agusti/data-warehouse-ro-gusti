@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   margin-top: 70px;
-  .login-div {
+  .form-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,13 +12,13 @@
     border: solid 1px $dark-grey;
     border-radius: 15px;
    //padding: 20px;
-    .login-subtitle {
+    .form-subtitle {
         margin-top: 50px;
       font-size: 14px;
       font-family: $font;
       color: $dark-grey;
     }
-    .input-login{
+    .input-form{
         margin-top: 20px;
         width: 300px;
         height: 30px;
@@ -28,7 +28,7 @@
         color: $dark-grey;
         font-size: 15px;
     }
-    .button-login{
+    .button-form{
         width: 150px;
         height: 45px;
         margin-top: 20px;

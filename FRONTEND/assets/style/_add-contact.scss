@@ -170,9 +170,23 @@
     }
   }
   .agregar-nuevo-contacto{
+    transform: translateY(-100px); 
     width: 80%;
-    height: 100px;
-    background-color: red;
-    margin-top: 0;
+    .btn-crear-contacto{
+      width: 172px;
+      height: 41px;
+      border: solid 1px $yellow;
+      background: $yellow;
+      border-radius: 7px;
+      color: $dark-grey;
+      font-family: $font;
+      font-size: 13.7px;
+      font-weight: bold;
+      &:hover{
+        background: $dark-grey;
+        color: $yellow;
+        font-size: 14.7px;
+      }
+    }
   }
 }

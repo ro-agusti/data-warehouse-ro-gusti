@@ -17,23 +17,23 @@
             <h2 class="logo">LOGO</h2>
             <div class="menu-div" id="menu-div">
                 <ul class="menu-ul " id="menu-ul">
-                    <li id="contact">contactos</li>
-                    <li id="companies">usuarios</li>
-                    <li id="users" class="hidden">compañias</li>
-                    <li id="location">region/ciudad</li>
+                    <li id="contactMenu" >contactos</li>
+                    <li id="usersMenu" class="hidden">usuarios</li>
+                    <li id="companiesMenu">compañias</li>
+                    <li id="locationMenu">region/ciudad</li>
                 </ul>
             </div>
         </nav>
         <div class="header-line"></div>
     </header>
     <main>
-        <section class=" login" id="login">
-            <div class="login-div">
-                <h3 class="login-subtitle">EMAIL</h3>
-                <input type="text" class="input-login" id="email-login">
-                <h3 class="login-subtitle">CONTRASEÑA</h3>
-                <input type="password" class="input-login" id="password-login">
-                <button class="button-login" id="button-login">INGRESAR</button>
+        <section class="login" id="login">
+            <div class="form-div">
+                <h3 class="form-subtitle">EMAIL</h3>
+                <input type="email" class="input-form" id="email-login">
+                <h3 class="form-subtitle">CONTRASEÑA</h3>
+                <input type="password" class="input-form" id="password-login">
+                <button class="button-form" id="button-login">INGRESAR</button>
             </div>
         </section>
         <section class="hidden banner" id="banner">
@@ -96,14 +96,6 @@
                     <td class="td-general">
                         <h5 class="title">UX Designer</h5>
                     </td>
-                    <!-- <td class="td-preferencias">
-                        <div class="td-preferencias_preferencia">
-                            <h6>Facebook</h6>
-                        </div>
-                        <div class="td-preferencias_preferencia">
-                            <h6>Instagram</h6>
-                        </div>
-                    </td> -->
                     <td class="td-interes">
                         <div class="td-interes_div">
                             <h6>100%</h6>
@@ -117,10 +109,10 @@
                 </tr>
             </table>
         </section>
-        <section class="nuevo-contacto" id="accContact">
+        <section class="hidden nuevo-contacto" id="newContact">
             <div class="nuevo-contacto-contenedor">
                 <h2>NUEVO CONTACTO</h2>
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times" id="btnCloseNewContact"></i>
             </div>
             <div class="datos-nuevo-contacto">
                 <div>
@@ -209,13 +201,35 @@
                 </div>
             </div>
             <div class="agregar-nuevo-contacto">
-                <button class="bton-crear-contacto">CREAR CONTACTO</button>
+                <button class="btn-crear-contacto">CREAR CONTACTO</button>
             </div>
+        </section>
+        <section class="hidden nuevo-usuario" id="newUser">
+            <div class="form-div">
+                <h3 class="form-subtitle">NOMBRE</h3>
+                <input type="text" class="input-form" id="name-users">
+                <h3 class="form-subtitle">APELLIDO</h3>
+                <input type="text" class="input-form" id="surname-users">
+                <h3 class="form-subtitle">EMAIL</h3>
+                <input type="email" class="input-form" id="email-users">
+                <h3 class="form-subtitle">PAIS</h3>
+                <input type="text" class="input-form" id="country-users">
+                <h3 class="form-subtitle">PERFIL</h3>
+                <input type="text" class="input-form" id="profile-users">
+                <h3 class="form-subtitle">CONTRASEÑA</h3>
+                <input type="password" class="input-form" id="password-users">
+                <button class="button-form" id="button-newUsers">INGRESAR</button>
+            </div>
+        </section>
+        <section class="location">
+            
         </section>
     </main>
     <script src="./assets/scripts/const.ID.js"></script>
     <script src="./assets/scripts/login.js"></script>
     <script src="./assets/scripts/contact.js"></script>
+    <script src="./assets/scripts/users.js"></script>
+    <script src="./assets/scripts/location.js"></script>
 </body>
 
 </html>

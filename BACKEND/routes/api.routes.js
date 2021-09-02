@@ -24,6 +24,9 @@ router.post('/login',
 
 router.post('/user',
     [
+        verifyToken,
+        verifyRoleAdmin,
+        existingUser,
         firstNameRequiredField,
         lastNameRequiredField,
         emailRequiredField,
@@ -31,10 +34,7 @@ router.post('/user',
         countryRequiredField,
         passwordRequiredField,
         emailSyntaxError,
-        weakPassword,
-        verifyToken,
-        verifyRoleAdmin,
-        existingUser,
+        weakPassword
     ],
     postUser
 );

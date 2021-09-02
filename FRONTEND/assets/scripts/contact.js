@@ -7,6 +7,10 @@ contactMenu.addEventListener('click', () => {
     contactBoard.classList.remove('hidden');
 });
 
-addContact.addEventListener('click', () => {
-    
-})
+btnAddContact.addEventListener('click', () => {
+    newContact.classList.toggle('hidden');
+});
+
+btnCloseNewContact.addEventListener('click', () => {
+    newContact.classList.toggle('hidden');
+});

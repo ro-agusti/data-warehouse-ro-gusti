@@ -28,11 +28,14 @@ btnLogin.addEventListener('click', async () => {
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(loginObject)
     }).catch(error => console.log(error));
+
     let respuesta = await response.json();
+
     const token = respuesta.respuesta;
     const role = respuesta.role;
-    /* console.log(token);*/
-    console.log(role);
+
+    localStorage.setItem('token',JSON.stringify(token));
+    
     verifyRole(token,role);
 });
 
@@ -45,20 +48,8 @@ const verifyRole = (token,role) => {
         banner.classList.remove('hidden');
         contactBoard.classList.remove('hidden');
         contactMenu.classList.add('li-selected');
-        if (role='ADMIN') {
+        if (role=='ADMIN') {
             usersMenu.classList.remove('hidden');
-        } else {
-            usersMenu.classList.toggle('hidden');
         }
     }
-    /* if (role = 'ADMIN') {
-        
-    } else if(role = 'USER') {
-        header.classList.toggle('hidden');
-        login.classList.toggle('hidden');
-        usersMenu.classList.toggle('hidden');
-        contactMenu.classList.add('li-selected');
-        banner.classList.remove('hidden');
-        contactBoard.classList.remove('hidden');
-    } */
 };
