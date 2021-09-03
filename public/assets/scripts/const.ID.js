@@ -3,6 +3,9 @@ const emailLogin = document.getElementById('email-login');
 const passwordLogin = document.getElementById('password-login');
 const btnLogin = document.getElementById('button-login');
 
+const loginDiv = document.getElementById('loginDiv');
+const userDiv = document.getElementById('userDiv');
+
 //MENU
 const header = document.getElementById('header');
 const login = document.getElementById('login');
@@ -27,3 +30,9 @@ const countryNewUser = document.getElementById('country-users');
 const profileNewUser = document.getElementById('profile-users');
 const passwordNewUser = document.getElementById('password-users');
 const btnNewUser = document.getElementById('button-newUsers');
+
+//POST SUCCESSFUL
+const postExitoso = document.getElementById('postExitoso');
+
+//LOCATION
+const locationSection = document.getElementById('location');

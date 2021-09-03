@@ -1,0 +1,133 @@
+.location {
+  display: flex;
+  flex-direction: column;
+  .btn-add {
+    margin-top: 20px;
+    align-self: flex-end;
+    padding-left: 15.9px;
+    padding-right: 15.9px;
+    margin-right: 20px;
+    width: 150px;
+    height: 30px;
+    border: solid 1px $yellow;
+    background: $yellow;
+    border-radius: 7px;
+    color: $dark-grey;
+    font-family: $font;
+    font-size: 13px;
+    font-weight: bold;
+    &:hover {
+      background: $dark-grey;
+      color: $yellow;
+    }
+  }
+  .div-region {
+    padding: 15px;
+    background-color: $bg-grey;
+    border-radius: 7px;
+    width: 95%;
+    margin-top: 10px;
+    align-self: center;
+    .region-name-actions {
+      display: flex;
+      h3 {
+        color: $dark-grey;
+        font-family: $font;
+        font-size: 20px;
+      }
+    }
+    .btn-actions {
+      margin-left: 15px;
+      //background-color: $dark-grey;
+      width: 30px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      //align-self: center;
+      i {
+        margin: auto;
+        text-align: center;
+        color: $dark-grey;
+        &:hover {
+          color: $yellow;
+        }
+      }
+    }
+    .countries {
+      margin-top: 10px;
+      display: flex;
+      //align-items: center;
+
+      .div-country {
+        background-color: $light-grey;
+        border-radius: 7px;
+        margin-left: 20px;
+        width: 23%;
+        .country-name-actions {
+          display: flex;
+          padding: 10px;
+          h4 {
+            color: $dark-grey;
+            font-family: $font;
+            font-size: 15px;
+          }
+          .btn-actions {
+            margin-left: 15px;
+            //background-color: $dark-grey;
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+            display: flex;
+            //align-self: center;
+            i {
+              margin: auto;
+              text-align: center;
+              color: $dark-grey;
+              &:hover {
+                color: $yellow;
+              }
+            }
+          }
+        }
+        .cities {
+            margin-left: 40px;
+          .city-name-actions {
+            display: flex;
+            h4 {
+              color: $dark-grey;
+              font-family: $font;
+              font-size: 12px;
+            }
+            .btn-actions {
+              margin-left: 15px;
+              //background-color: $dark-grey;
+              width: 30px;
+              height: 20px;
+              border-radius: 4px;
+              display: flex;
+              //align-self: center;
+              i {
+                margin: auto;
+                text-align: center;
+                color: $dark-grey;
+                &:hover {
+                  color: $yellow;
+                }
+              }
+            }
+          }
+          .btn-add{
+              margin-bottom: 10px;
+              width: 100px;
+              height: 25px;
+          }
+        }
+      }
+      .btn-add{
+          width: 75px;
+          margin-left: 20px;
+          align-self: flex-start;
+      }
+    }
+  }
+}

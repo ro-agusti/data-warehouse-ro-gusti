@@ -13,7 +13,18 @@
 @import "_contact-board.scss";
 @import "_add-contact.scss";
 @import "_users.scss";
+@import "_successful-post.scss";
+@import "_location.scss";
 
+.red-error{
+    margin-top: 10px;
+    color: $red-error;
+    font-size: 12px;
+    font-family: $font;
+    &::before{
+        content: "* ";
+    }
+}
 .hidden{
     display: none;
 };

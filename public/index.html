@@ -17,7 +17,7 @@
             <h2 class="logo">LOGO</h2>
             <div class="menu-div" id="menu-div">
                 <ul class="menu-ul " id="menu-ul">
-                    <li id="contactMenu" >contactos</li>
+                    <li id="contactMenu">contactos</li>
                     <li id="usersMenu" class="hidden">usuarios</li>
                     <li id="companiesMenu">compañias</li>
                     <li id="locationMenu">region/ciudad</li>
@@ -28,7 +28,7 @@
     </header>
     <main>
         <section class="login" id="login">
-            <div class="form-div">
+            <div class="form-div" id="loginDiv">
                 <h3 class="form-subtitle">EMAIL</h3>
                 <input type="email" class="input-form" id="email-login">
                 <h3 class="form-subtitle">CONTRASEÑA</h3>
@@ -205,7 +205,7 @@
             </div>
         </section>
         <section class="hidden nuevo-usuario" id="newUser">
-            <div class="form-div">
+            <div class="form-div" id="userDiv">
                 <h3 class="form-subtitle">NOMBRE</h3>
                 <input type="text" class="input-form" id="name-users">
                 <h3 class="form-subtitle">APELLIDO</h3>
@@ -221,11 +221,153 @@
                 <button class="button-form" id="button-newUsers">INGRESAR</button>
             </div>
         </section>
-        <section class="location">
-            
+        <section class="hidden location" id="location">
+            <button class="btn-add">AGREGAR REGION</button>
+            <div class="div-region">
+                <div class="region-name-actions">
+                    <h3>SUDAMERICA</h3>
+                    <button class="edit-acciones btn-actions"><i class="fas fa-edit"></i></button>
+                    <button class="delete-acciones btn-actions"><i class="fas fa-trash-alt "></i></button>
+                </div>
+                <div class="countries">
+                    <div class="div-country">
+                        <div class="country-name-actions">
+                            <h4>argentina</h4>
+                            <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                            <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                        </div>
+                        <div class="cities">
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <button class="btn-add">agregar ciudad</button>
+                        </div>
+                    </div>
+                    <div class="div-country">
+                        <div class="country-name-actions">
+                            <h4>argentina</h4>
+                            <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                            <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                        </div>
+                        <div class="cities">
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <button class="btn-add">agregar ciudad</button>
+                        </div>
+                    </div>
+                    <button class="btn-add">agregar pais</button>
+                </div>
+            </div>
+            <div class="div-region">
+                <div class="region-name-actions">
+                    <h3>SUDAMERICA</h3>
+                    <button class="edit-acciones btn-actions"><i class="fas fa-edit"></i></button>
+                    <button class="delete-acciones btn-actions"><i class="fas fa-trash-alt "></i></button>
+                </div>
+                <div class="countries">
+                    <div class="div-country">
+                        <div class="country-name-actions">
+                            <h4>argentina</h4>
+                            <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                            <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                        </div>
+                        <div class="cities">
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <button class="btn-add">agregar ciudad</button>
+                        </div>
+                    </div>
+                    <div class="div-country">
+                        <div class="country-name-actions">
+                            <h4>argentina</h4>
+                            <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                            <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                        </div>
+                        <div class="cities">
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <div class="city-name-actions">
+                                <h4>buenos aires</h4>
+                                <button class="btn-actions"><i class="fas fa-edit"></i></button>
+                                <button class="btn-actions"><i class="fas fa-trash-alt "></i></button>
+                            </div>
+                            <button class="btn-add">agregar ciudad</button>
+                        </div>
+                    </div>
+                    <button class="btn-add">agregar pais</button>
+                </div>
+            </div>
         </section>
+        <section id="postExitoso"></section>
     </main>
     <script src="./assets/scripts/const.ID.js"></script>
+    <script src="./assets/scripts/funciones-varias.js"></script>
     <script src="./assets/scripts/login.js"></script>
     <script src="./assets/scripts/contact.js"></script>
     <script src="./assets/scripts/users.js"></script>
