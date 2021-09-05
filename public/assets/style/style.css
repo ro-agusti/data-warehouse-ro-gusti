@@ -882,6 +882,37 @@
   color: #fbd41d;
 }
 
+.location .add-input {
+  margin-left: 20px;
+}
+
+.location .add-input input {
+  margin-top: 10px;
+  width: 200px;
+  height: 20px;
+  border: solid 1px #707070;
+  border-radius: 20px;
+  padding: 10px;
+  color: #707070;
+  font-size: 15px;
+}
+
+.location .add-input button {
+  margin-left: 10px;
+  font-weight: bold;
+  background-color: #fbd41d;
+  width: 50px;
+  height: 30px;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #707070;
+}
+
+.location .add-input button:hover {
+  color: #fbd41d;
+  background-color: #707070;
+}
+
 .location .div-region {
   padding: 15px;
   background-color: #c4c3c3;

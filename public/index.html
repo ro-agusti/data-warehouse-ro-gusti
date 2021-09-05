@@ -26,7 +26,7 @@
         </nav>
         <div class="header-line"></div>
     </header>
-    <main>
+    <main id="mainID">
         <section class="login" id="login">
             <div class="form-div" id="loginDiv">
                 <h3 class="form-subtitle">EMAIL</h3>
@@ -222,8 +222,13 @@
             </div>
         </section>
         <section class="hidden location" id="location">
-            <button class="btn-add">AGREGAR REGION</button>
-            <div class="div-region">
+            <button class="btn-add" id="btnAddRegion">AGREGAR REGION</button>
+            <div class="hidden add-input" id="addInput">
+                <input type="text" placeholder="Nombre de Region" id="inputValueAdd">
+                <button id="btnAddInput">ADD or EDIT</button>
+            </div>
+
+           <!--  <div class="div-region" >
                 <div class="region-name-actions">
                     <h3>SUDAMERICA</h3>
                     <button class="edit-acciones btn-actions"><i class="fas fa-edit"></i></button>
@@ -362,7 +367,7 @@
                     </div>
                     <button class="btn-add">agregar pais</button>
                 </div>
-            </div>
+            </div> -->
         </section>
         <section id="postExitoso"></section>
     </main>

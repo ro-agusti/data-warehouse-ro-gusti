@@ -69,9 +69,7 @@ const getCountries = async(req,res) => {
     try {
         const {idRegion} = req.params;
         const sqlHelpers = await selectCountriesByRegionSql(idRegion);
-        respuesta = {
-            mensaje: sqlHelpers
-        }
+        respuesta = sqlHelpers
         res.status(200).send(respuesta);
     } catch (error) {
         res.status(500).send(error);

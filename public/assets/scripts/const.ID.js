@@ -6,6 +6,9 @@ const btnLogin = document.getElementById('button-login');
 const loginDiv = document.getElementById('loginDiv');
 const userDiv = document.getElementById('userDiv');
 
+//MAIN
+const mainID = document.getElementById('mainID');
+
 //MENU
 const header = document.getElementById('header');
 const login = document.getElementById('login');
@@ -36,3 +39,7 @@ const postExitoso = document.getElementById('postExitoso');
 
 //LOCATION
 const locationSection = document.getElementById('location');
+const btnAddRegion = document.getElementById('btnAddRegion');
+const addInput = document.getElementById('addInput');
+const inputValueAdd = document.getElementById('inputValueAdd');
+const btnAddInput = document.getElementById('btnAddInput');
